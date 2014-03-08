@@ -1,0 +1,24 @@
+<div class="pull-right">
+	<a href="#!/create" class="btn btn-default" ng-show="hasRole('admin')" title="Create"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<div class="page-header">
+	<h3>Files</h3>
+</div>
+<table class="table table-striped table-condensed table-hover">
+	<thead>
+		<tr>
+			<th class="id" custom-sort order="'id'" sort="sort">Id&nbsp;</th>
+			<th class="name" custom-sort order="'name'" sort="sort">Name&nbsp;</th>
+			<th ng-show="hasRole('admin')" class="description" custom-sort
+				order="'address'" sort="sort">Address&nbsp;</th>
+		</tr>
+	</thead>
+    <tbody>
+       <tr ng-repeat="fileEntry in fileEntries | orderBy:sort.sortingOrder:sort">
+           <td>{{fileEntry.id}}</td>
+           <td><a href="" ng-click="fileAccessed(fileEntry)">{{fileEntry.name}}</a></td>
+           <td ng-show="hasRole('admin')" >{{fileEntry.address}}</td>
+       </tr>
+   </tbody>
+</table>
+<hr />
