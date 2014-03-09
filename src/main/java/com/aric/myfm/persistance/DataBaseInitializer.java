@@ -2,6 +2,7 @@ package com.aric.myfm.persistance;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.aric.myfm.domain.FileEntry;
 import com.aric.myfm.domain.User;
 
 
@@ -41,15 +42,12 @@ public class DataBaseInitializer {
 		adminUser.addRole("user");
 		adminUser.addRole("admin");
 		this.userDao.save(adminUser);
+		
+		FileEntry fileEntry = new FileEntry();
+		fileEntry.setName("Dursuns CV");
+		fileEntry.setAddress("https://docs.google.com/file/d/0BzVhRIRv4HBqcjdCM2RuN3pHWngzMXlIdzBuY1NqbzhSYnU4/edit?pli=1");
+		fileEntryDao.save(fileEntry);
 
-//		long timestamp = System.currentTimeMillis() - 1000 * 60 * 60 * 24;
-//		for (int i = 0; i < 10; i++) {
-//			FileEntry newsEntry = new FileEntry();
-//			newsEntry.setContent("This is example content " + i);
-//			newsEntry.setDate(new Date(timestamp));
-//			this.newsEntryDao.save(newsEntry);
-//			timestamp += 1000 * 60 * 60;
-//		}
 		System.out.println(fileEntryDao);
 	}
 
